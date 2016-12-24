@@ -1,0 +1,142 @@
+<!DOCTYPE html><!--[if lt IE 7]>
+<html lang="en" class="ie ie6"></html><![endif]--><!--[if IE 7]>
+<html lang="en" class="ie ie7"></html><![endif]--><!--[if IE 8]>
+<html lang="en" class="ie ie8"></html><![endif]--><!--[if (gte IE 9)|!(IE)]>
+<html lang="en"></html>
+<head>
+  <!-- Basic Page Needs-->
+  <meta charset="utf-8">
+  <title>A.I.M Lab - 内核代码保护</title>
+  <!-- Mobile specific Metas-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Le styles-->
+  <link href="/assets/css/app.css" rel="stylesheet">
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+  <script src="/assets/js/html5.js"></script><![endif]-->
+  <!-- Fav and touch icons-->
+  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon-144x144.png">
+</head>
+<body>
+  <div id="wrap" class="boxed">
+    <header>
+      <div class="container clearfix">
+        <div class="six columns">
+          <div class="logo"><a href="/cn/index.html">互联网与系统实验室</a></div>
+        </div>
+        <div class="ten columns">
+          <nav id="menu" class="navigation">
+            <ul id="nav">
+              <li><a href="javascript:void" class="">动态</a>
+                <ul>
+                  <li><a href="/cn/news/paper.html">论文</a></li>
+                  <li><a href="/cn/news/patent.html">专利</a></li>
+                  <li><a href="/cn/news/conference.html">会议</a></li>
+                  <li><a href="/cn/news/event.html">活动</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="active">项目</a>
+                <ul>
+                  <li><a href="/cn/project/system-and-web-security.html">系统与 Web 安全</a></li>
+                  <li><a href="/cn/project/heterogeneous-computing.html">GPU 异构计算</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="">发表</a>
+                <ul>
+                  <li><a href="/cn/publication/2014.html">2014</a></li>
+                  <li><a href="/cn/publication/2013.html">2013</a></li>
+                  <li><a href="/cn/publication/2012.html">2012</a></li>
+                  <li><a href="/cn/publication/more.html">更早</a></li>
+                  <li><a href="/cn/publication/patents.html">专利与软件著作权</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="">团队</a>
+                <ul>
+                  <li><a href="/cn/team/teachers.html">导师</a></li>
+                  <li><a href="/cn/team/students.html">研究生</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="">教学</a>
+                <ul>
+                  <li><a href="/cn/course/operating-system-2014.html">操作系统 2014 秋</a></li>
+                  <li><a href="/cn/course/computer-networking-2014.html">计算机网络 2014 春</a></li>
+                  <li><a href="/cn/course/network-security-2014.html">网络安全 2014 春</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void">中文</a>
+                <ul>
+                  <li><a href="/cn/index.html">中文</a></li>
+                  <li><a href="/en/index.html">en</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="sixteen columns">
+          <hr>
+        </div>
+      </div>
+    </header>
+    <div class="container clearfix">
+      <div class="sixteen columns">
+        <h1 class="page-title">内核代码保护<span class="line"></span>
+        </h1>
+      </div>
+      <div class="page-columns">
+        <div id="markdown" class="sixteen columns bottom"><h2>问题</h2>
+<p>由于对采用冯诺依曼结构的现代计算机来说，代码和数据存储在同一地址空间，因此大多数现代计算机都有被更改内核代码的威胁。而传统保护内核代码安全的方法有以下两类： 一类是由操作系统本身自带的或是其他研究者以系统补丁的方式提供的一些保护机制。这些方法大多是利用底层硬件（段页表表项的权限位，NX-bit等）对一些重要的区域进行保护.虽然这些方法在一定程度上能有效地保护内核，但在面对内核级rootkit威胁时其应用范围很有限。 另外一类方法是通过检测代码一致性的方法来判断内核代码是否被修改。这些类方法独立于操作系统正常功能之外，基于十分复杂的策略，其系统往往十分庞大。而且，严格的说，这些方法并没有起到保护的作用，它们更多的是采用一种检测的方法，没有做到主动防御的工作。另外，这些系统虽然能够检测到对内核的修改，但是对攻击者修改内核代码的具体行为一无所知，对事后的入侵分析和恢复也不能提供任何有价值的线索。</p>
+<h2>方法</h2>
+<p>该系统提供了一种保护内核的新方法。该方法通过采用哈佛存储体系结构，使得指令和数据在物理地址上分离开，从而使得在系统启动后，所有对内核代码的非法操作都重新导向到用来承担非法操作的影子区域。这种方法在操作系统层面执行，而且在攻击者获得系统操作最高特权级时也能保护内核。除此之外，该方法还能记录所有尝试更改内核代码的非法操作，对入侵分析能够提供有效信息。攻击者不会发现他们的恶意攻击已经被欺骗和记录。该方法利用了一些硬件特性并且只产生了非常小的工作负荷。 图片一比较了冯诺依曼体系结构和哈佛体系结构的存储结构差异。图片二展现了采用新方法的系统结构模型。</p>
+<h2>实验</h2>
+<p>在本试验中，将修改后的Rootkit adore-ng 0.56安装在内核为Linux 2.6.11的Fedora Core 4上。在没有本文的保护机制下，在rootkit成功安装之后系统就不能正常工作了。而在同一机器上，在使用本文方法修改过内核的Fedora Core 4上，Rootkit adore-ng 0.56安装成功后系统仍然正常工作，没有出现任何错误。通过System.map找到影子区域的地址（kernel_mirror），再查看其内容，发现影子区域内存单元的内容已经全部被修改为‘0’字符，这说明Rootkit试图对内核代码进行的修改被导向了影子区域，而正常的内核代码未受影响，试验表明本文的保护机制是有效的，而且对操作系统的正常功能没有影响，工作负荷也很小。</p>
+<h2>总结</h2>
+<p>在本系统中，通过在当前操作系统上采用虚拟化的哈佛存储体系结构，使得整个内核地址空间的指令存取和数据操作在物理上分离开，从而有效地防止内核空间遭受代码注入攻击，增强了Linux内核的安全性。该虚拟化过程被详细介绍，它抵抗攻击的有效性以及对当前操作系统的影响被全面地评价和分析。而且实验结果表明，这种新方法是有效且实用的。</p>
+<p><strong>资助：本项目得到中国重点基础研究基金973项目和国家自然科学基金资助。</strong></p>
+
+        </div>
+      </div>
+    </div>
+    <div class="push"></div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="ten columns"><span class="copyright">
+          © 2015 A.I.M Lab 互联网与系统实验室
+          . Theme by&nbsp;<a href="http://karma-runner.github.io/">Karma</a>.</span></div>
+      <div class="six columns">
+        <div class="social"><a href="https://github.com/aimlab" data-tooltip="GitHub Repo"><i class="icon-github-alt icon-large"></i></a><a href="mailto:haochen@aimlab.org" data-tooltip="Mailing List"><i class="icon-envelope-alt icon-large"></i></a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- Placed at the end of the document so the pages load faster-->
+<script src="/assets/js/app.js">;</script>
+<!-- Google Analytics-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-00000000-0']);
+  _gaq.push(['_trackPageview']);
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+</script>
+<script type="text/javascript">
+  var $buoop = {vs:{i:8,f:10,o:17,s:5.1}}; 
+  function $buo_f(){ 
+    var e = document.createElement("script"); 
+    e.src = "//browser-update.org/update.js"; 
+    document.body.appendChild(e);
+  };
+  try {
+  document.addEventListener("DOMContentLoaded", $buo_f,false);
+  } catch(e){window.attachEvent("onload", $buo_f);}
+</script><![endif]-->

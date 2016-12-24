@@ -1,0 +1,148 @@
+<!DOCTYPE html><!--[if lt IE 7]>
+<html lang="en" class="ie ie6"></html><![endif]--><!--[if IE 7]>
+<html lang="en" class="ie ie7"></html><![endif]--><!--[if IE 8]>
+<html lang="en" class="ie ie8"></html><![endif]--><!--[if (gte IE 9)|!(IE)]>
+<html lang="en"></html>
+<head>
+  <!-- Basic Page Needs-->
+  <meta charset="utf-8">
+  <title>A.I.M Lab - vCUDA: 一个应用于虚拟机平台的通用计算方法</title>
+  <!-- Mobile specific Metas-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Le styles-->
+  <link href="/assets/css/app.css" rel="stylesheet">
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+  <script src="/assets/js/html5.js"></script><![endif]-->
+  <!-- Fav and touch icons-->
+  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon-144x144.png">
+</head>
+<body>
+  <div id="wrap" class="boxed">
+    <header>
+      <div class="container clearfix">
+        <div class="six columns">
+          <div class="logo"><a href="/cn/index.html">互联网与系统实验室</a></div>
+        </div>
+        <div class="ten columns">
+          <nav id="menu" class="navigation">
+            <ul id="nav">
+              <li><a href="javascript:void" class="">动态</a>
+                <ul>
+                  <li><a href="/cn/news/paper.html">论文</a></li>
+                  <li><a href="/cn/news/patent.html">专利</a></li>
+                  <li><a href="/cn/news/conference.html">会议</a></li>
+                  <li><a href="/cn/news/event.html">活动</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="active">项目</a>
+                <ul>
+                  <li><a href="/cn/project/system-and-web-security.html">系统与 Web 安全</a></li>
+                  <li><a href="/cn/project/heterogeneous-computing.html">GPU 异构计算</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="">发表</a>
+                <ul>
+                  <li><a href="/cn/publication/2014.html">2014</a></li>
+                  <li><a href="/cn/publication/2013.html">2013</a></li>
+                  <li><a href="/cn/publication/2012.html">2012</a></li>
+                  <li><a href="/cn/publication/more.html">更早</a></li>
+                  <li><a href="/cn/publication/patents.html">专利与软件著作权</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="">团队</a>
+                <ul>
+                  <li><a href="/cn/team/teachers.html">导师</a></li>
+                  <li><a href="/cn/team/students.html">研究生</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="">教学</a>
+                <ul>
+                  <li><a href="/cn/course/operating-system-2014.html">操作系统 2014 秋</a></li>
+                  <li><a href="/cn/course/computer-networking-2014.html">计算机网络 2014 春</a></li>
+                  <li><a href="/cn/course/network-security-2014.html">网络安全 2014 春</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void">中文</a>
+                <ul>
+                  <li><a href="/cn/index.html">中文</a></li>
+                  <li><a href="/en/index.html">en</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="sixteen columns">
+          <hr>
+        </div>
+      </div>
+    </header>
+    <div class="container clearfix">
+      <div class="sixteen columns">
+        <h1 class="page-title">vCUDA: 一个应用于虚拟机平台的通用计算方法<span class="line"></span>
+        </h1>
+      </div>
+      <div class="page-columns">
+        <div id="markdown" class="sixteen columns bottom"><h2>问题</h2>
+<p>虚拟机化技术成功的将许多物理设备抽象成内存或硬盘中的数据结构，如网卡、硬盘、内存等。但GPU（图形处理单元）从来不曾被完善的虚拟化，这其中一个主要原因在于GPU缺乏统一的硬件接口和开放的体系规范。在实践中，学术界和工业界选择在协议栈的更高层：用户API层进行虚拟化，一些针对传统图形3D API的虚拟化工作已取得阶段成果。 CUDA (Compute Unified Device Architecture)是一套崭新的GPU应用编程API，专注于GPGPU计算而不是图形应用。它为程序员提供直接控制GPU并行计算能力的接口，而不再依赖于传统图形API如OPENGL。 CUDA框架的出现为虚拟化提出了新的问题：传统图形3D API的虚拟化工具对虚拟化CUDA没有任何帮助，运行在虚拟机中的应用程序无法调用CUDA API，从而不能利用GPU先进的并行加速功能。</p>
+<h2>方法</h2>
+<p>借鉴对传统图形3D API的虚拟化方法，在CUDA框架的基础上实现了一套封装和重定向机制vCUDA，使得虚拟机内的应用程序可以运用位于特权域或VMM内的GPU硬件提供的通用计算能力。请注意CUDA目前仍然不是足够开放和稳定的框架，这一点与虚拟化OPENGL时的情况截然不同。这种封闭性造成了对CUDA内部语义理解上的困难，也难以有针对性的提出优化措施。</p>
+<p>vCUDA目前的实现包括：</p>
+<ul>
+<li><p>虚拟化CUDA API: 在总共56个 runtime API中有31个已实现虚拟化。我们的方法是拦截虚拟机内对CUDA API的调用，将相应参数封装起来，然后通过远程过程调用（RPC）的方式将调用重定向到远程的服务器，服务器控制实际硬件，完成相应请求并返回结果。这种拦截-重定向是实现硬件-软件解耦合的常用方法。vCUDA的实现中，难点在于对API参数尤其是指针的处理、GPU状态一致性的维护。</p>
+</li>
+<li><p>懒加载 RPC: vCUDA使用了XML-RPC作为客户操作系统和宿主操作系统之间的过程调用协议，为了提高其性能，我们将部分可延迟的RPC请求缓存在一个FIFO队列中，直到一个必须处理的RPC请求到达。 图一 展示了vCUDA的整体框架。vCUDA采用客户-服务器模式，包括三个部份：vCUDA库、虚拟GPU和服务器存根。 图二 比较了vCUDA框架相对于非虚拟环境的开销，横轴为八个取自官方SDK的例子程序，竖轴为其执行时间。.</p>
+</li>
+</ul>
+<h2>实验</h2>
+<p>在Xen下针对vCUDA的实验证明，vCUDA可在虚拟机中正确的运行未经修改的官方样例和第三方程序。性能相关实验显示vCUDA引入了一定的开销，经分析这种开销主要是由于XML-RPC在虚拟机条件下的低效造成。</p>
+<h2>总结</h2>
+<p>本项目实现了一套基于虚拟机的通用计算框架vCUDA。它通过拦截-重定向CUDA API，向虚拟机提供远程并行计算加速的能力，而无需修改源码或操作系统。任何基于CUDA的应用程序可以在不损失功能的情况下部署于虚拟机平台，充分享受其带来的灵活性。我们的实验显示了vCUDA框架的竞争力和广泛适应性。</p>
+
+        </div>
+      </div>
+    </div>
+    <div class="push"></div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="ten columns"><span class="copyright">
+          © 2015 A.I.M Lab 互联网与系统实验室
+          . Theme by&nbsp;<a href="http://karma-runner.github.io/">Karma</a>.</span></div>
+      <div class="six columns">
+        <div class="social"><a href="https://github.com/aimlab" data-tooltip="GitHub Repo"><i class="icon-github-alt icon-large"></i></a><a href="mailto:haochen@aimlab.org" data-tooltip="Mailing List"><i class="icon-envelope-alt icon-large"></i></a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- Placed at the end of the document so the pages load faster-->
+<script src="/assets/js/app.js">;</script>
+<!-- Google Analytics-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-00000000-0']);
+  _gaq.push(['_trackPageview']);
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+</script>
+<script type="text/javascript">
+  var $buoop = {vs:{i:8,f:10,o:17,s:5.1}}; 
+  function $buo_f(){ 
+    var e = document.createElement("script"); 
+    e.src = "//browser-update.org/update.js"; 
+    document.body.appendChild(e);
+  };
+  try {
+  document.addEventListener("DOMContentLoaded", $buo_f,false);
+  } catch(e){window.attachEvent("onload", $buo_f);}
+</script><![endif]-->

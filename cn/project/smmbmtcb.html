@@ -1,0 +1,146 @@
+<!DOCTYPE html><!--[if lt IE 7]>
+<html lang="en" class="ie ie6"></html><![endif]--><!--[if IE 7]>
+<html lang="en" class="ie ie7"></html><![endif]--><!--[if IE 8]>
+<html lang="en" class="ie ie8"></html><![endif]--><!--[if (gte IE 9)|!(IE)]>
+<html lang="en"></html>
+<head>
+  <!-- Basic Page Needs-->
+  <meta charset="utf-8">
+  <title>A.I.M Lab - 基于 SMM 的 TCB 的最小架构</title>
+  <!-- Mobile specific Metas-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Le styles-->
+  <link href="/assets/css/app.css" rel="stylesheet">
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+  <script src="/assets/js/html5.js"></script><![endif]-->
+  <!-- Fav and touch icons-->
+  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon-144x144.png">
+</head>
+<body>
+  <div id="wrap" class="boxed">
+    <header>
+      <div class="container clearfix">
+        <div class="six columns">
+          <div class="logo"><a href="/cn/index.html">互联网与系统实验室</a></div>
+        </div>
+        <div class="ten columns">
+          <nav id="menu" class="navigation">
+            <ul id="nav">
+              <li><a href="javascript:void" class="">动态</a>
+                <ul>
+                  <li><a href="/cn/news/paper.html">论文</a></li>
+                  <li><a href="/cn/news/patent.html">专利</a></li>
+                  <li><a href="/cn/news/conference.html">会议</a></li>
+                  <li><a href="/cn/news/event.html">活动</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="active">项目</a>
+                <ul>
+                  <li><a href="/cn/project/system-and-web-security.html">系统与 Web 安全</a></li>
+                  <li><a href="/cn/project/heterogeneous-computing.html">GPU 异构计算</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="">发表</a>
+                <ul>
+                  <li><a href="/cn/publication/2014.html">2014</a></li>
+                  <li><a href="/cn/publication/2013.html">2013</a></li>
+                  <li><a href="/cn/publication/2012.html">2012</a></li>
+                  <li><a href="/cn/publication/more.html">更早</a></li>
+                  <li><a href="/cn/publication/patents.html">专利与软件著作权</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="">团队</a>
+                <ul>
+                  <li><a href="/cn/team/teachers.html">导师</a></li>
+                  <li><a href="/cn/team/students.html">研究生</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void" class="">教学</a>
+                <ul>
+                  <li><a href="/cn/course/operating-system-2014.html">操作系统 2014 秋</a></li>
+                  <li><a href="/cn/course/computer-networking-2014.html">计算机网络 2014 春</a></li>
+                  <li><a href="/cn/course/network-security-2014.html">网络安全 2014 春</a></li>
+                </ul>
+              </li>
+              <li><a href="javascript:void">中文</a>
+                <ul>
+                  <li><a href="/cn/index.html">中文</a></li>
+                  <li><a href="/en/index.html">en</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="sixteen columns">
+          <hr>
+        </div>
+      </div>
+    </header>
+    <div class="container clearfix">
+      <div class="sixteen columns">
+        <h1 class="page-title">基于 SMM 的 TCB 的最小架构<span class="line"></span>
+        </h1>
+      </div>
+      <div class="page-columns">
+        <div id="markdown" class="sixteen columns bottom"><h2>问题</h2>
+<p>如何实现TCB的最小化一直是系统开发者及安全工作者追求的目标，一个最小化的TCB不仅可以使保证程序正确运行所需要依赖集足够小，从而使得对于程序完整性和运行结果正确性的测量更简易可靠。而且对于远程验证，不需要发送整个系统的信息，可以有效地避免被验证主机内部信息的泄露。</p>
+<p>传统的TCB包括，BIOS, DMA, bootloader, OS，所要验证应用程序高层或更高层的应用程序集，应用程序本身。要验证某一个应用程序的部分的安全敏感代码的执行的可信，要包含所有的这些。其中OS包含上百万的代码，隐藏着很多的已知和未知的bug，在OS中运行的其他应用程序更包含了很多bug，这些都大大地增加了验证的困难度，降低了验证结果的可信度。</p>
+<p>如今很多有很多关于TCB最小化的研究，很多利用了虚拟机有效的减小了TCB的大小，但是现如今的VMM仍然包含十几万的代码，并且随着功能的增加代码量还在急剧的增长。Flicker利用了硬件虚拟化技术，将敏感代码放在隔离的环境执行有效的实现了TCB的最小化，但是由于其使用了最新的技术，所以不能运用到传统的系统上。</p>
+<h2>方法</h2>
+<p>本系统提出了基于SMM隔离环境的最小化的TCB架构，利用SMM产生的隔离环境，通过建立动态信任根有效的实现具有和Flicker的类似的最小化特性，同时由于SMM是Intel 80386开始就提供的一种保护模式，所以该架构可以有非常广应用范围，让更多传统系统实现了TCB的最小化。</p>
+<p><img src="http://aimlab.qiniudn.com/site/smmbmtcb.jpg" alt="架构图" width="" height="">
+<img src="http://aimlab.qiniudn.com/site/smmbmtcb2.jpg" alt="架构图" width="" height=""></p>
+<h2>实验</h2>
+<p>主要将这个架构应用到三个实例中，通过实验的测试该结构可以在ＯＳ被感染的情况下，依然有效的对安全敏感代码进行保护，实现了最小化的TCB。在性能测试中对TCB最小化进行了一些性能的评估。</p>
+<h2>总结</h2>
+<p>我们的提出基于SMM的最小化TCB架构，可以使TCB的大小减小到最小，验证者只需要信任一部分我们提供的少量初始化代码，和安全敏感代码本身，就可以对执行结果进行有效的信任。该架构可以很好的适用于传统配备硬件虚拟化的电脑，具有很好的通用性。通过实验，该架构可以有效的保证敏感代码的安全，执行的可信任性。</p>
+<p><strong>资助：本项目得到中国重点基础研究基金973项目和国家自然科学基金资助。</strong></p>
+
+        </div>
+      </div>
+    </div>
+    <div class="push"></div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="ten columns"><span class="copyright">
+          © 2015 A.I.M Lab 互联网与系统实验室
+          . Theme by&nbsp;<a href="http://karma-runner.github.io/">Karma</a>.</span></div>
+      <div class="six columns">
+        <div class="social"><a href="https://github.com/aimlab" data-tooltip="GitHub Repo"><i class="icon-github-alt icon-large"></i></a><a href="mailto:haochen@aimlab.org" data-tooltip="Mailing List"><i class="icon-envelope-alt icon-large"></i></a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- Placed at the end of the document so the pages load faster-->
+<script src="/assets/js/app.js">;</script>
+<!-- Google Analytics-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-00000000-0']);
+  _gaq.push(['_trackPageview']);
+  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+</script>
+<script type="text/javascript">
+  var $buoop = {vs:{i:8,f:10,o:17,s:5.1}}; 
+  function $buo_f(){ 
+    var e = document.createElement("script"); 
+    e.src = "//browser-update.org/update.js"; 
+    document.body.appendChild(e);
+  };
+  try {
+  document.addEventListener("DOMContentLoaded", $buo_f,false);
+  } catch(e){window.attachEvent("onload", $buo_f);}
+</script><![endif]-->

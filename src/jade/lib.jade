@@ -1,0 +1,23 @@
+mixin navigation(self, menu)
+  - var sections = ['news', 'project', 'publication', 'team', 'course'];
+  - var chineseDict = {'news': '动态', 'project': '项目', 'publication': '发表', 'team': '团队', 'course': '教学'};
+
+  for section in sections
+    - var active = section == self.section ? 'active' : '';
+    - var shownName = self.version == 'cn' ? chineseDict[section] : section;
+    li
+      a(href='javascript:void', class='#{active}')= shownName
+      ul
+        for item in menu[section]
+          li
+            a(href='/#{item.url}')
+              = item.menuTitle
+
+mixin versionDropdown(versions, current)
+  - var shownName = {'en': 'en', 'cn': '中文'};
+  li
+    a(href='javascript:void')= shownName[current]
+    ul
+      each version in versions
+        li
+          a(href='/#{version}/index.html')= shownName[version]

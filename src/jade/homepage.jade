@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  .container.clearfix
+    #welcome.sixteen.columns
+      .qoute
+        .ten-and-half.columns.omega
+          h1 互联网与系统实验室
+          h1 Advanced Internet and systeMs lab, A.I.M lab 
+          h5 研究领域：并行分布式系统, 对等网络；网络安全和信息安全, web安全；虚拟化技术。
+        .four-and-half.columns.alpha
+          a.btn-github.link(href='news/paper.html')
+            span
+              i.icon-star-empty
+              | &nbsp; 更多动态
+          a.btn-npm.link(href='mailto:haochen@aimlab.org')
+            span
+              i.icon-user
+              | &nbsp; 联系我们
+
+  #slider
+    .container.clearfix.bottom
+      .sixteen.columns
+        .flex-container
+          .flexslider
+            ul.slides
+              li
+                a(href='http://www.aimlab.org')
+                  img(src='/assets/img/01.jpg')
+                p.flex-caption
+                  span 湖南大学
+              li
+                a(href='http://www.aimlab.org')
+                  img(src='/assets/img/02.jpg')
+                p.flex-caption
+                  span 爱晚红枫
+
+  
