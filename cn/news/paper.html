@@ -1,8 +1,11 @@
-<!DOCTYPE html><!--[if lt IE 7]>
-<html lang="en" class="ie ie6"></html><![endif]--><!--[if IE 7]>
-<html lang="en" class="ie ie7"></html><![endif]--><!--[if IE 8]>
-<html lang="en" class="ie ie8"></html><![endif]--><!--[if (gte IE 9)|!(IE)]>
-<html lang="en"></html>
+<!DOCTYPE html><!-- [if lt IE 7]>
+<html lang="en" class="ie ie6"></html><![endif]-->
+<!-- [if IE 7]>
+<html lang="en" class="ie ie7"></html><![endif]-->
+<!-- [if IE 8]>
+<html lang="en" class="ie ie8"></html><![endif]-->
+<!-- [if (gte IE 9)|!(IE)]>
+<html lang="en"></html><![endif]-->
 <head>
   <!-- Basic Page Needs-->
   <meta charset="utf-8">
@@ -13,8 +16,11 @@
   <meta name="author" content="">
   <!-- Le styles-->
   <link href="/assets/css/app.css" rel="stylesheet">
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
-  <script src="/assets/js/html5.js"></script><![endif]-->
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements-->
+  <!-- if lt IE 9
+  script(src='/assets/js/html5.js')
+  
+  -->
   <!-- Fav and touch icons-->
   <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -40,13 +46,13 @@
                   <li><a href="/cn/news/event.html">活动</a></li>
                 </ul>
               </li>
-              <li><a href="javascript:void" class="">项目</a>
+              <li><a href="javascript:void">项目</a>
                 <ul>
                   <li><a href="/cn/project/system-and-web-security.html">系统与 Web 安全</a></li>
                   <li><a href="/cn/project/heterogeneous-computing.html">GPU 异构计算</a></li>
                 </ul>
               </li>
-              <li><a href="javascript:void" class="">发表</a>
+              <li><a href="javascript:void">发表</a>
                 <ul>
                   <li><a href="/cn/publication/2014.html">2014</a></li>
                   <li><a href="/cn/publication/2013.html">2013</a></li>
@@ -55,13 +61,13 @@
                   <li><a href="/cn/publication/patents.html">专利与软件著作权</a></li>
                 </ul>
               </li>
-              <li><a href="javascript:void" class="">团队</a>
+              <li><a href="javascript:void">团队</a>
                 <ul>
                   <li><a href="/cn/team/teachers.html">导师</a></li>
                   <li><a href="/cn/team/students.html">研究生</a></li>
                 </ul>
               </li>
-              <li><a href="javascript:void" class="">教学</a>
+              <li><a href="javascript:void">教学</a>
                 <ul>
                   <li><a href="/cn/course/operating-system-2014.html">操作系统 2014 秋</a></li>
                   <li><a href="/cn/course/computer-networking-2014.html">计算机网络 2014 春</a></li>
@@ -90,6 +96,7 @@
       <div class="page-columns">
         <div id="markdown" class="sixteen columns bottom"><h2>2013</h2>
 <h3>[0720] 论文: 论文: BAG: Managing GPU as Buffer Cache in Operating Systems，被TPDS录用</h3>
+<p><a href="hello.pdf">下载</a></p>
 <p>Abstract—This paper presents the design, implementation and evaluation of BAG, a system that manages GPU as the buffer cache in operating systems. Unlike previous uses of GPUs, which have focused on the computational capabilities of GPUs, BAG is designed to explore a new dimension in managing GPUs in heterogeneous systems where the GPU memory is an exploitable but always ignored resource. With the carefully designed data structures and algorithms, such as concurrent hashtable, log-structured data store for the management of GPU memory, and highly-parallel GPU kernels for garbage collection, BAG achieves good performance under various workloads. In addition, leveraging the existing abstraction of the operating system not only makes the implementation of BAG non-intrusive, but also facilitates the system deployment.</p>
 <h3>[0715] 论文: A Fast RPC system for Virtual Machines，被TPDS刊出</h3>
 <p>论文“A Fast RPC system for Virtual Machines”被IEEE Transactions on Parallel and Distributed Systems (TPDS)在2013年7月刊出。</p>
@@ -124,11 +131,11 @@
   </footer>
 </body>
 <!-- Placed at the end of the document so the pages load faster-->
-<script src="/assets/js/app.js">;</script>
+<script src="/assets/js/app.js"></script>
 <!-- Google Analytics-->
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-00000000-0']);
+  _gaq.push(['_setAccount', 'UA-75069803-5']);
   _gaq.push(['_trackPageview']);
   
   (function() {
@@ -136,16 +143,4 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-  
 </script>
-<script type="text/javascript">
-  var $buoop = {vs:{i:8,f:10,o:17,s:5.1}}; 
-  function $buo_f(){ 
-    var e = document.createElement("script"); 
-    e.src = "//browser-update.org/update.js"; 
-    document.body.appendChild(e);
-  };
-  try {
-  document.addEventListener("DOMContentLoaded", $buo_f,false);
-  } catch(e){window.attachEvent("onload", $buo_f);}
-</script><![endif]-->
