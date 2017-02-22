@@ -10,8 +10,10 @@ mixin navigation(self, menu)
       ul
         for item in menu[section]
           li
-            a(href='/#{item.url}')
-              = item.menuTitle
+            if item.externUrl
+              a(href='#{item.externUrl}')= item.menuTitle
+            else
+              a(href='/#{item.url}')= item.menuTitle
 
 mixin versionDropdown(versions, current)
   - var shownName = {'en': 'en', 'cn': '中文'};

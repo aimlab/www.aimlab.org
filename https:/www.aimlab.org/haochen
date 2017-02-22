@@ -9,7 +9,7 @@
 <head>
   <!-- Basic Page Needs-->
   <meta charset="utf-8">
-  <title>A.I.M Lab - 2014 年论文</title>
+  <title>A.I.M Lab - Haochen</title>
   <!-- Mobile specific Metas-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="">
@@ -40,56 +40,39 @@
             <ul id="nav">
               <li><a href="javascript:void">动态</a>
                 <ul>
-                  <li><a href="/cn/news/paper.html">论文</a>
-                  </li>
-                  <li><a href="/cn/news/patent.html">专利</a>
-                  </li>
-                  <li><a href="/cn/news/conference.html">会议</a>
-                  </li>
-                  <li><a href="/cn/news/event.html">活动</a>
-                  </li>
+                  <li><a href="/cn/news/paper.html">论文</a></li>
+                  <li><a href="/cn/news/patent.html">专利</a></li>
+                  <li><a href="/cn/news/conference.html">会议</a></li>
+                  <li><a href="/cn/news/event.html">活动</a></li>
                 </ul>
               </li>
               <li><a href="javascript:void">项目</a>
                 <ul>
-                  <li><a href="/cn/project/system-and-web-security.html">系统与 Web 安全</a>
-                  </li>
-                  <li><a href="/cn/project/heterogeneous-computing.html">GPU 异构计算</a>
-                  </li>
+                  <li><a href="/cn/project/system-and-web-security.html">系统与 Web 安全</a></li>
+                  <li><a href="/cn/project/heterogeneous-computing.html">GPU 异构计算</a></li>
                 </ul>
               </li>
-              <li><a href="javascript:void" class="active">发表</a>
+              <li><a href="javascript:void">发表</a>
                 <ul>
-                  <li><a href="/cn/publication/2014.html">2014</a>
-                  </li>
-                  <li><a href="/cn/publication/2013.html">2013</a>
-                  </li>
-                  <li><a href="/cn/publication/2012.html">2012</a>
-                  </li>
-                  <li><a href="/cn/publication/more.html">更早</a>
-                  </li>
-                  <li><a href="/cn/publication/patents.html">专利与软件著作权</a>
-                  </li>
+                  <li><a href="/cn/publication/2014.html">2014</a></li>
+                  <li><a href="/cn/publication/2013.html">2013</a></li>
+                  <li><a href="/cn/publication/2012.html">2012</a></li>
+                  <li><a href="/cn/publication/more.html">更早</a></li>
+                  <li><a href="/cn/publication/patents.html">专利与软件著作权</a></li>
                 </ul>
               </li>
-              <li><a href="javascript:void">团队</a>
+              <li><a href="javascript:void" class="active">团队</a>
                 <ul>
-                  <li><a href="/cn/team/teachers.html">导师</a>
-                  </li>
-                  <li><a href="https://www.aimlab.org/haochen">-&gt; 陈浩</a>
-                  </li>
-                  <li><a href="/cn/team/students.html">研究生</a>
-                  </li>
+                  <li><a href="/cn/team/teachers.html">导师</a></li>
+                  <li><a href="/https://www.aimlab.org/haochen">Haochen</a></li>
+                  <li><a href="/cn/team/students.html">研究生</a></li>
                 </ul>
               </li>
               <li><a href="javascript:void">教学</a>
                 <ul>
-                  <li><a href="/cn/course/operating-system-2014.html">操作系统 2014 秋</a>
-                  </li>
-                  <li><a href="/cn/course/computer-networking-2014.html">计算机网络 2014 春</a>
-                  </li>
-                  <li><a href="/cn/course/network-security-2014.html">网络安全 2014 春</a>
-                  </li>
+                  <li><a href="/cn/course/operating-system-2014.html">操作系统 2014 秋</a></li>
+                  <li><a href="/cn/course/computer-networking-2014.html">计算机网络 2014 春</a></li>
+                  <li><a href="/cn/course/network-security-2014.html">网络安全 2014 春</a></li>
                 </ul>
               </li>
               <li><a href="javascript:void">中文</a>
@@ -108,13 +91,11 @@
     </header>
     <div class="container clearfix">
       <div class="sixteen columns">
-        <h1 class="page-title">2014 年论文<span class="line"></span>
+        <h1 class="page-title">Haochen<span class="line"></span>
         </h1>
       </div>
       <div class="page-columns">
-        <div id="markdown" class="sixteen columns bottom"><ul>
-<li>BAG: Managing GPU as Buffer Cache in Operating Systems&quot;, Manuscript Type. TPDS, to appear</li>
-</ul>
+        <div id="markdown" class="sixteen columns bottom"><p>menuTitle: haochen</p>
 
         </div>
       </div>

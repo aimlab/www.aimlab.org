@@ -83,6 +83,7 @@ module.exports = function(grunt) {
 
             return {
               url: basePath + urlFromFilename(fileName),
+              externUrl: parsed.metadata.externUrl,
               editUrl: editUrlFromFilenameAndSection(fileName, section),
               layout: parsed.metadata.layout || 'layout',
               content: parsed.html,
