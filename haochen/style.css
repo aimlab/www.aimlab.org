@@ -1,0 +1,143 @@
+body {font-family:"Times New Roman", Times, serif;
+/*  background-image: url("bg.jpg") */
+}
+p.margin {
+  text-align:justify /* line stretched to have equal length.*/
+ width:90%;   /* only 90% of the text block width */
+ margin-left:5%;   /* 5% left margin */
+}
+
+
+h1 {
+  margin:1px
+}
+h2 {clear:both}
+h3 {clear:both; margin-left:1em}
+h4 {margin:1px}
+div.clearboth {
+  clear:both;
+ width:100%;
+/*  margin-right:5%; */
+}
+
+#positions {}
+#publications {}
+#teaching {margin-top:-20px;}
+
+div.pos { /* div pub class. */
+width:90%; /* only 90% of the text block width */
+margin-left:7%; /* 7% left margin */
+overflow:auto;
+/*display:table;*/ /* Table display. */
+}
+
+div.teach { /* div news class. */
+width:90%; /* only 90% of the text block width */
+margin-left:5%; /* 7% left margin */
+margin-top:-20px; /* -20 pixels top margin */
+overflow:auto;
+}
+
+div.news { /* div news class. */
+width:90%; /* only 90% of the text block width */
+margin-left:5%; /* 5% left margin */
+margin-top:-20px; /* -20 pixels top margin */
+overflow:auto;
+}
+
+div.pub { /* div pub class. */
+width:90%; /* only 90% of the text block width */
+margin-left:5%; /* 5% left margin */
+margin-top:-20px; /* -20 pixels top margin */
+overflow:auto;
+/*display:table;*/ /* Table display. */
+}
+
+div.award { /* div award class. */
+width:90%; /* only 90% of the text block width */
+margin-left:5%; /* 5% left margin */
+margin-top:-25px; /* -25 pixels top margin */
+overflow:auto;
+/*display:table;*/ /* Table display. */
+}
+/* ID - minor */
+#minor{
+font-size:80%;
+}
+
+tr > td{
+padding-bottom: 1em;
+}
+
+td {vertical-align: middle; }
+
+td.conf {
+width:15%;
+font-size: 1.1em;
+}
+
+td.publist{
+width:60%;
+}
+
+td.publinks{
+width:15%;
+text-align:center;
+}
+
+span.title { font-weight: bold;}
+span.proc { font-style: italic;}
+
+.paper
+{
+}
+
+.paper li
+{
+  margin-bottom: 10px
+}
+
+.paper .description
+{
+        font-style: italic;
+        text-align: justify;
+        color: darkblue;
+        margin-left: 2%;
+        margin-top: 20px;
+}
+
+div.abstract
+{
+        font-style: italic;
+        text-align: justify;
+        width: 90%;
+}
+
+
+img.bar {display:block;
+	margin-left:auto;margin-right:auto;
+	width:90%;height:1ex}
+
+#picture {
+  PADDING-LEFT: 15px;
+  FLOAT: left;
+  MARGIN-BOTTOM: 15px;
+  margin-right:1%;
+  margin-left:5%;
+}
+
+#joepict {width:40px; height:60px }
+
+#contactdiv {
+  float:left;
+/*width:90%;*/ /* only 90% of the text block width */
+margin-left:0%; /* 5% left margin */
+}
+#contact {margin:15px}
+
+#address {float:left}
+
+#maintext {width: 90%; margin-left:5%; margin-right:5%}
+#about {clear:both;}
+
+#research { }
