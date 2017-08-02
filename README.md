@@ -5,8 +5,9 @@
 1. Clone 项目：
 
 ```
-git clone git@git.coding.net:aimlab/aimlab.git
+git clone git@github.com:chengchang/www.aimlab.org.git
 cd aimlab
+git checkout gh-pages
 ```
 
 2. 安装环境
@@ -26,7 +27,7 @@ grunt server  # 预览，http://localhost:8000
 ```
 git add .
 git commit -m "update log"
-git push origin master
+git push origin gh-pages
 ```
 
 ## 二、编辑内容
@@ -34,8 +35,7 @@ git push origin master
 * 文档位于 `src/content`，目前有 `cn` 和 `en` 两个版本；
 * 版本内部的目录名称与菜单一一对应，如中文版「动态」->「论文」，对应 `src/content/cn/news/01-paper.md`；
 * 文档采用 markdown 编写，通过 `grunt build`命令，编译为页面；
-* 小附件可以放到 `assets` 目录下，并在文档中提供链接供下载；
-* Coding.net 限制 Pages 服务部署不超过 100MB，大附件最好通过网盘。
+* 小附件可以放到 `assets` 目录下，并在文档中提供链接供下载。
 
 
 
